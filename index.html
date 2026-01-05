@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diyo Production</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="#home">
+                <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" class="btn-nav">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <h1>Diyo Production</h1>
+            <div class="divider"></div>
+            <p>Capturing Moments. Creating Stories.</p>
+            <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        </div>
+    </header>
+
+    <section id="portfolio" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Selected Works</h2>
+            <p>Curated photography for brands and nature lovers.</p>
+        </div>
+
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="clubs">Clubs</button>
+            <button class="filter-btn" data-filter="restaurants">Restaurants</button>
+            <button class="filter-btn" data-filter="nature">Outdoor & Nature</button>
+        </div>
+
+        <div class="portfolio-grid"></div> 
+    </div>
+</section>
+
+    <section id="about" class="section bg-light">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Photographer Profile">
+            </div>
+            <div class="about-text">
+                <h2>Behind the Lens</h2>
+                <p>Hello, I'm Alex. I specialize in bringing spaces and atmospheres to life. Whether it’s the high energy of a nightclub, the cozy warmth of a local pub, or the raw beauty of the outdoors, my goal is to create visual stories that resonate.</p>
+                <p>With a focus on natural light and composition, I help brands and venues showcase their unique personality through premium imagery.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Signature_sample.svg" alt="Signature" class="signature">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2>Let's Work Together</h2>
+                <p>Available for freelance projects and brand collaborations.</p>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> hello@yourportfolio.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> London, UK</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Alex Morgan Photography. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
