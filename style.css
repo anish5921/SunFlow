@@ -1,0 +1,570 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    /* Color Palette */
+    --bg-color: #F9F9F7;       /* Warm White/Alabaster */
+    --bg-accent: #EFEFE9;      /* Slightly darker beige */
+    --text-primary: #333333;   /* Soft Charcoal */
+    --text-secondary: #666666; /* Muted Gray */
+    --accent-gold: #D4A373;    /* Muted Gold */
+    --accent-hover: #C08E5D;   
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevents horizontal scroll on mobile */
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   2. NAVIGATION UPDATED
+   ========================================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* CHANGE 1: Remove vertical padding (0) so logo has room to expand */
+    padding: 0 5%; 
+    background-color: rgba(249, 249, 247, 0.98);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    /* CHANGE 2: Set a fixed height (e.g. 80px) */
+    height: 80px; 
+}
+
+/* Logo Handling */
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Ensure container takes full height */
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    /* CHANGE 3: Make logo huge but keep it inside the bar */
+    height: auto;       /* Keep aspect ratio */
+    max-height: 70px;   /* 80px Navbar - 10px buffer = Big Logo */
+    width: auto;
+    display: block;
+}
+
+/* Desktop Menu */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+/* Clean Contact Button (No Border) */
+.btn-nav {
+    border: none;
+    padding: 0; 
+    background-color: transparent;
+}
+
+.btn-nav:hover {
+    color: var(--accent-gold);
+    background-color: transparent;
+}
+
+/* Burger Menu (Hidden on Desktop) */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+header {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Placeholder Hero Image */
+    background-image: url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: brightness(0.85); 
+}
+
+.hero-content {
+    color: white;
+    z-index: 1;
+    animation: fadeInUp 1.5s ease;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    margin: 0 auto 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: var(--accent-gold);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   4. LAYOUT & SECTIONS
+   ========================================= */
+.section {
+    padding: 100px 5%;
+}
+
+.bg-light {
+    background-color: var(--bg-accent);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* =========================================
+   5. PORTFOLIO GRID
+   ========================================= */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    height: 350px;
+    cursor: pointer;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 25px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay h3 {
+    font-size: 1.4rem;
+    font-family: var(--font-heading);
+    margin-bottom: 5px;
+}
+
+.overlay p {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hide {
+    display: none;
+}
+
+/* =========================================
+   6. ABOUT SECTION
+   ========================================= */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.about-img {
+    flex: 1;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 15px 15px 0px var(--accent-gold);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.signature {
+    width: 140px;
+    opacity: 0.7;
+    margin-top: 30px;
+}
+
+/* =========================================
+   7. CONTACT SECTION
+   ========================================= */
+.contact-wrapper {
+    display: flex;
+    gap: 60px;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    margin-top: 30px;
+}
+
+.contact-info ul li {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-info i {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+}
+
+.social-links {
+    margin-top: 40px;
+}
+
+.social-links a {
+    font-size: 1.4rem;
+    margin-right: 25px;
+    color: var(--text-primary);
+    opacity: 0.7;
+}
+
+.social-links a:hover {
+    color: var(--accent-gold);
+    opacity: 1;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+/* Elegant Input Style (Bottom Border Only) */
+input, textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    transition: border-color 0.3s;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #bbb;
+    font-weight: 300;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* =========================================
+   9. ANIMATIONS
+   ========================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   10. RESPONSIVE / MOBILE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+    /* Reveal Burger Icon */
+    .burger {
+        display: block;
+        z-index: 1001; /* Above mobile menu */
+    }
+
+    /* Mobile Menu Styles */
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh; /* Total height minus Nav bar height */
+        top: 8vh;     /* Starts below the Nav bar */
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center links vertically */
+        width: 60%; /* Menu width */
+        transform: translateX(100%); /* Start hidden (right) */
+        transition: transform 0.4s ease-in;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links li {
+        margin: 25px 0;
+        opacity: 0; /* Fade in effect */
+        animation: navLinkFade 0.5s ease forwards 0.3s;
+    }
+
+    /* Active State (Added by JS) */
+    .nav-links.nav-active {
+        transform: translateX(0%);
+    }
+
+    /* Hero Text Adjustment */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    /* Stack Sections Vertically */
+    .about-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .contact-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* Single Column Grid */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section {
+        padding: 60px 5%;
+    }
+}
+
+/* Animation for Burger turning into X */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Animation for links appearing */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
